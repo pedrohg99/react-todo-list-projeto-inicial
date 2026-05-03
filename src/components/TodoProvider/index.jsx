@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import TodoContext from "./TodoContext";
+import TodoContext from "./todoContext";
 
 const TODOS = "todos";
 
