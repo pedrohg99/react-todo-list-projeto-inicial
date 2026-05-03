@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { use } from "react";
 import { ChecklistsWrapper } from "./components/ChecklistsWrapper";
 import { Container } from "./components/Container";
 import { Dialog } from "./components/Dialog";
@@ -12,16 +12,11 @@ import { TodoGroup } from "./components/TodoGroup";
 import TodoContext from "./components/ToDoProvider/todoContext";
 
 function App() {
-  const [showDialog, setShowDialog] = useState(false);
-  const { todos, addTodo } = use(TodoContext);
-
-  const toggleDialog = () => {
-    setShowDialog(!showDialog);
-  };
+  const { todos, addTodo, showDialog, openFormTodoDialog, closeFormTodoDialog, selectedTodo } = use(TodoContext);
 
   const handleFormSubmit = (formData) => {
     addTodo(formData);
-    toggleDialog();
+    openFormTodoDialog();
   };
 
   return (
@@ -42,10 +37,10 @@ function App() {
             items={todos.filter((t) => t.completed)}
           />
           <Footer>
-            <Dialog isOpen={showDialog} onClose={toggleDialog}>
-              <ToDoForm onSubmit={handleFormSubmit} />
+            <Dialog isOpen={showDialog} onClose={closeFormTodoDialog}>
+              <ToDoForm onSubmit={handleFormSubmit} defaultValue={selectedTodo?.description} />
             </Dialog>
-            <FabButton onClick={toggleDialog}>
+            <FabButton onClick={openFormTodoDialog}>
               <IconPlus />
             </FabButton>
           </Footer>
