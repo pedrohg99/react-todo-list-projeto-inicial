@@ -9,7 +9,7 @@ import { Heading } from "./components/Heading";
 import { IconPlus, IconSchool } from "./components/icons";
 import { ToDoForm } from "./components/ToDoForm";
 import { TodoGroup } from "./components/TodoGroup";
-import TodoContext from "./components/TodoProvider/todoContext";
+import TodoContext from "./components/TodoProvider/TodoContext";
 import { EmptyState } from "./components/EmptyState";
 
 function App() {
