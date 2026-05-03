@@ -76,31 +76,37 @@ function App() {
 
   const addTodo = (formData) => {
     const description = formData.get("description");
-    setTodos(prevState => {
+    setTodos((prevState) => {
       const todo = {
         id: prevState.length + 1,
         description,
         completed: false,
         createdAt: new Date().toISOString(),
-      }
+      };
       return [...prevState, todo];
     });
     toggleDialog();
   };
 
   const toggleTodoCompleted = (todo) => {
-    setTodos(prevState => {
-      return prevState.map(t => {
+    setTodos((prevState) => {
+      return prevState.map((t) => {
         if (t.id == todo.id) {
           return {
-            ...t, 
-            completed: !t.completed
-          }
+            ...t,
+            completed: !t.completed,
+          };
         }
-        return t
-      })
-    })
-  }
+        return t;
+      });
+    });
+  };
+
+  const deleteTodo = (todo) => {
+    setTodos((prevState) => {
+      return prevState.filter((t) => t.id != todo.id);
+    });
+  };
 
   return (
     <main>
@@ -116,7 +122,14 @@ function App() {
             {todos
               .filter((t) => !t.completed)
               .map(function (t) {
-                return <ToDoItem key={t.id} item={t} onToogleCompleted={toggleTodoCompleted} />;
+                return (
+                  <ToDoItem
+                    key={t.id}
+                    item={t}
+                    onToogleCompleted={toggleTodoCompleted}
+                    onDeleteTodo={deleteTodo}
+                  />
+                );
               })}
           </ToDoList>
           <SubHeading>Concluído</SubHeading>
@@ -124,7 +137,14 @@ function App() {
             {todos
               .filter((t) => t.completed)
               .map(function (t) {
-                return <ToDoItem key={t.id} item={t} onToogleCompleted={toggleTodoCompleted} />;
+                return (
+                  <ToDoItem
+                    key={t.id}
+                    item={t}
+                    onToogleCompleted={toggleTodoCompleted}
+                    onDeleteTodo={deleteTodo}
+                  />
+                );
               })}
           </ToDoList>
           <Footer>
