@@ -10,8 +10,6 @@ import { IconPlus, IconSchool } from "./components/icons";
 import { SubHeading } from "./components/SubHeading";
 import { ToDoItem } from "./components/ToDoItem";
 import { ToDoList } from "./components/ToDoList";
-import { TextInput } from "./components/TextInput";
-import { Button } from "./components/Button";
 import { ToDoForm } from "./components/ToDoForm";
 
 const todos = [
@@ -63,8 +61,8 @@ function App() {
   };
 
   const addTodo = () => {
-    toggleDialog()
-  }
+    toggleDialog();
+  };
 
   return (
     <main>
