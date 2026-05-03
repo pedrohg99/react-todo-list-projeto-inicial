@@ -9,8 +9,8 @@ import { Heading } from "./components/Heading";
 import { IconPlus, IconSchool } from "./components/icons";
 import { ToDoForm } from "./components/ToDoForm";
 import { TodoGroup } from "./components/TodoGroup";
-import TodoContext from "./components/TodoProvider/todoContext";
 import { EmptyState } from "./components/EmptyState";
+import TodoContext from "./components/TodoProvider/todoContext";
 
 function App() {
   const { todos, addTodo, showDialog, openFormTodoDialog, closeFormTodoDialog, selectedTodo, editTodo } = use(TodoContext);
