@@ -51,15 +51,15 @@ export function TodoProvider({ children }) {
   };
 
   return (
-  <TodoContext
-    value={{
+    <TodoContext
+      value={{
         todos,
         addTodo,
         toggleTodoCompleted,
-        deleteTodo
-    }}
-  >
-    {children}
-</TodoContext>
-);
+        deleteTodo,
+      }}
+    >
+      {children}
+    </TodoContext>
+  );
 }
