@@ -16,6 +16,14 @@ export function Dialog({ isOpen, onClose, children }) {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    dialog?.addEventListener("close", onClose);
+    return () => {
+      dialog?.removeEventListener("close", onClose);
+    };
+  }, [onClose]);
+
   // "Show the dialog" button opens the dialog modally
   const openDialog = () => {
     dialogRef.current.showModal();
@@ -33,9 +41,7 @@ export function Dialog({ isOpen, onClose, children }) {
           <button autoFocus onClick={onClose} className="btn-close">
             <IconClose />
           </button>
-          <div className="body">
-            {children}
-          </div>
+          <div className="body">{children}</div>
         </div>
       </dialog>
     </React.Fragment>
